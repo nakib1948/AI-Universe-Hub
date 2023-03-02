@@ -13,7 +13,7 @@
 
         <section class="text-center mt-5 mb-5">
             <h1 class="mb-4">AI Universe Hub</h1>
-            <button class="px-3 py-2 text-white rounded text-center " style="background-color: #EB5757;  ">Sort By Date</button>
+            <button onclick="sortByDate()" class="px-3 py-2 text-white rounded text-center " style="background-color: #EB5757;  ">Sort By Date</button>
         
         </section>
        
@@ -24,11 +24,17 @@
                       
             </div>
             <div id="show-all" class="text-center mt-3 ">
-                <button onclick="myFunction()" id="btn-show-all" class="px-4 py-2 text-white rounded text-center " style="background-color: #EB5757;  ">See more</button>
+                <button onclick="seeMoreFunction()" id="btn-show-all" class="px-4 py-2 text-white rounded text-center " style="background-color: #EB5757;  ">See more</button>
             </div>
         </section>
         
-
+        <section id="loader" class="d-none">
+            <div style="height:400px" class="d-flex border align-items-center justify-content-center">
+                <div style="width: 6rem; height: 6rem;" class="spinner-border text-success" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </section>
       
 
      </main>

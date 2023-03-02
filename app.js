@@ -1,20 +1,46 @@
-const UniverseHub = async(datalimit)=>{
+const UniverseHub = async(datalimit,srotbydate)=>{
+    toggleSpinner(true)
     const url = `https://openapi.programming-hero.com/api/ai/tools`
     const res =await fetch(url)
     const data=await res.json()
-    displayUniverseHub(data.data.tools,datalimit)
+    displayUniverseHub(data.data.tools,datalimit,srotbydate)
 } 
 
-function myFunction() {
+
+/* In this function show all data from api will be show by clicking this see more button */
+function seeMoreFunction() {
+    const newsContainer= document.getElementById('newsContainer')
+    newsContainer.textContent=''
+    toggleSpinner(true)
     UniverseHub()
+    document.getElementById('btn-show-all').remove()
 }
 
-const displayUniverseHub=(data,datalimit)=>{
-  
+// sort by date
+function sortByDate(){
+    const newsContainer= document.getElementById('newsContainer')
+    newsContainer.textContent=''
+    toggleSpinner(true)
+    UniverseHub(0,3)
+}
+
+const displayUniverseHub=(data,datalimit,srotbydate)=>{
      if(datalimit)
      data=data.slice(0,6)
+
+     if(srotbydate)
+     {
+        //console.log(data[0].published_in)
+        data.sort(function(a, b) {
+            var c = new Date(a.published_in);
+            var d = new Date(b.published_in);
+            return c-d;
+        });
+       // data.sort(function(a,b){return a.published_in.getTime() - b.published_in.getTime()});
+     }
+
       data.forEach(news=>{
-        console.log(news)
+       // console.log(news)
       const createDiv=document.createElement('div')
     
     
@@ -46,8 +72,17 @@ const displayUniverseHub=(data,datalimit)=>{
      
       newsContainer.appendChild(createDiv)
     })
-
+    toggleSpinner(false)
  }
  
+ const toggleSpinner = isLoading=>{
+    const loaderSection= document.getElementById('loader')
+    if(isLoading)
+    {
+        loaderSection.classList.remove('d-none')
+    }
+    else loaderSection.classList.add('d-none')
+}
+
 
  UniverseHub(6)
