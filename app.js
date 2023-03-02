@@ -41,7 +41,7 @@ const displayUniverseHub=(data,datalimit,srotbydate)=>{
      }
 
       data.forEach(news=>{
-       // console.log(news)
+        console.log(news)
       const createDiv=document.createElement('div')
     
     
@@ -61,7 +61,7 @@ const displayUniverseHub=(data,datalimit,srotbydate)=>{
            <div class="d-flex justify-content-between">
                 <small> <img width='15px' class='mr-1' src="./images/calendar-blank-icon.svg">
                 ${news.published_in}</small>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                <button onclick="loadDataDetails('${news.id}')" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
                  style="background-color:#FEF7F7;border-radius:50%;border:none;width:50px hight:30px">
                 <img width="50px" src="./images/icons8-right-arrow-64.png">
                 </button>
@@ -85,6 +85,39 @@ const displayUniverseHub=(data,datalimit,srotbydate)=>{
     }
     else loaderSection.classList.add('d-none')
 }
+
+const loadDataDetails= async id=>{
+    const url=`https://openapi.programming-hero.com/api/ai/tool/${id}`
+    const res= await fetch(url)
+    const data=await res.json()
+    console.log(data.data)
+    displayDataDetails(data.data)
+}
+const displayDataDetails= news=>{
+    const description=document.getElementById('description-part')
+     description.innerText=news.description
+     const price=document.getElementById('pricing')
+     const price1=document.getElementById('pricing1')
+     const price2=document.getElementById('pricing2')
+     price.innerHTML=`
+     <p style="color:green">${news.pricing[0].price}</p>
+     <p  style="color:green">${news.pricing[0].plan}</p>
+     `
+     price1.innerHTML=`
+     <p style="color:orange">${news.pricing[1].price}</p>
+     <p style="color:orange">${news.pricing[1].plan}</p>
+     `
+     price2.innerHTML=`
+     <p class='text-center' style="color:#EB5757">${news.pricing[2].price}</p>
+     <p class='text-center'  style="color:#EB5757">${news.pricing[2].plan}</p>
+     `
+    // const phoneDetails= document.getElementById('phone-details')
+    // phoneDetails.innerHTML=`
+    // <p>Release Date: ${phone.releaseDate ? phone.releaseDate :'No release date found'}</p>
+    // <p>Others: ${phone.mainFeatures ? phone.mainFeatures.storage:'No Storage Information'}</p>
+    // `
+}
+
 
 
  UniverseHub(6)
