@@ -99,6 +99,8 @@ const displayDataDetails= news=>{
      const price=document.getElementById('pricing')
      const price1=document.getElementById('pricing1')
      const price2=document.getElementById('pricing2')
+
+
      price.innerHTML=`
      <p style="color:green">${news.pricing[0].price}</p>
      <p  style="color:green">${news.pricing[0].plan}</p>
@@ -111,6 +113,39 @@ const displayDataDetails= news=>{
      <p class='text-center' style="color:#EB5757">${news.pricing[2].price}</p>
      <p class='text-center'  style="color:#EB5757">${news.pricing[2].plan}</p>
      `
+
+
+     const features=document.getElementById('features')
+     const integration=document.getElementById('Integrations')
+
+
+
+     features.innerHTML=`
+     <h4>Features</h4>
+     <li>${news.features[1].feature_name}</li>
+     <li>${news.features[2].feature_name}</li>
+     <li>${news.features[3].feature_name}</li>
+
+     `
+
+     integration.innerHTML=`
+     <h4>Integrations</h4>
+     <li>${news.integrations[0]}</li>
+     <li>${news.integrations[1]}</li>
+     <li>${news.integrations[2]}</li>
+     `
+     document.getElementById("cardimg").src = news.image_link[0];
+
+
+     const chatting=document.getElementById('chatting')
+     chatting.innerHTML=`
+     <h4 class='text-center' >${news.input_output_examples[0].input}</h4>
+     <p class='text-center' >${news.input_output_examples[0].output}</p>
+     `
+    //  const img=document.createElement("img"); 
+    //  img.src = `${news.image_link[0]}`; 
+    //  const src = document.getElementById("second-card"); 
+    //  src.appendChild(img); 
     // const phoneDetails= document.getElementById('phone-details')
     // phoneDetails.innerHTML=`
     // <p>Release Date: ${phone.releaseDate ? phone.releaseDate :'No release date found'}</p>
