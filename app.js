@@ -22,6 +22,7 @@ function sortByDate(){
     newsContainer.textContent=''
     toggleSpinner(true)
     UniverseHub(0,3)
+    document.getElementById('btn-show-all').remove()
 }
 
 const displayUniverseHub=(data,datalimit,srotbydate)=>{
@@ -60,7 +61,8 @@ const displayUniverseHub=(data,datalimit,srotbydate)=>{
            <div class="d-flex justify-content-between">
                 <small> <img width='15px' class='mr-1' src="./images/calendar-blank-icon.svg">
                 ${news.published_in}</small>
-                <button style="background-color:#FEF7F7;border-radius:50%;border:none;width:50px hight:30px">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                 style="background-color:#FEF7F7;border-radius:50%;border:none;width:50px hight:30px">
                 <img width="50px" src="./images/icons8-right-arrow-64.png">
                 </button>
            </div>
