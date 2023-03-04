@@ -25,23 +25,24 @@ function sortByDate(){
     document.getElementById('btn-show-all').remove()
 }
 
+// data sort function
 const displayUniverseHub=(data,datalimit,srotbydate)=>{
      if(datalimit)
      data=data.slice(0,6)
 
      if(srotbydate)
      {
-        //console.log(data[0].published_in)
+        
         data.sort(function(a, b) {
             var c = new Date(a.published_in);
             var d = new Date(b.published_in);
             return c-d;
         });
-       // data.sort(function(a,b){return a.published_in.getTime() - b.published_in.getTime()});
+      
      }
-
+// getting data from api
       data.forEach(news=>{
-        console.log(news)
+       
       const createDiv=document.createElement('div')
     
     
@@ -77,6 +78,7 @@ const displayUniverseHub=(data,datalimit,srotbydate)=>{
     toggleSpinner(false)
  }
  
+//  implementing togglespiner to show this during the time of data loading
  const toggleSpinner = isLoading=>{
     const loaderSection= document.getElementById('loader')
     if(isLoading)
@@ -85,12 +87,12 @@ const displayUniverseHub=(data,datalimit,srotbydate)=>{
     }
     else loaderSection.classList.add('d-none')
 }
-
+//this function load specific data of selected id
 const loadDataDetails= async id=>{
     const url=`https://openapi.programming-hero.com/api/ai/tool/${id}`
     const res= await fetch(url)
     const data=await res.json()
-    console.log(data.data)
+   
     displayDataDetails(data.data)
 }
 const displayDataDetails= news=>{
@@ -126,21 +128,11 @@ const displayDataDetails= news=>{
     
   
 
-
+    //features and intregation part of modal
      const features=document.getElementById('features')
      const integration=document.getElementById('Integrations')
 
         
-
-
-    //  features.innerHTML=`
-    //  <h4>Features</h4>
-     
-    //  <li>${news.features[1].feature_name}</li>
-    //  <li>${news.features[2].feature_name}</li>
-    //  <li>${news.features[3].feature_name}</li>
-    //  `
-
     features.innerHTML =' <h4>Features</h4>   '
 
      for(let data in news.features) {
@@ -165,6 +157,8 @@ const displayDataDetails= news=>{
         integration.innerHTML=`<h4>Integrations</h4><p>No data Found</p>`
      }
    
+
+     //image,acuracy,chatting part of the modal
      if(news.accuracy.score!=null){
         document.getElementById("cardimg").src = news.image_link[0];
         document.getElementById('accuracy').innerHTML=`${news.accuracy.score*100}% accuracy`
@@ -188,20 +182,6 @@ const displayDataDetails= news=>{
         `
      }
     
-    
-    
-    
-    
-    
-     //  const img=document.createElement("img"); 
-    //  img.src = `${news.image_link[0]}`; 
-    //  const src = document.getElementById("second-card"); 
-    //  src.appendChild(img); 
-    // const phoneDetails= document.getElementById('phone-details')
-    // phoneDetails.innerHTML=`
-    // <p>Release Date: ${phone.releaseDate ? phone.releaseDate :'No release date found'}</p>
-    // <p>Others: ${phone.mainFeatures ? phone.mainFeatures.storage:'No Storage Information'}</p>
-    // `
 }
 
 
