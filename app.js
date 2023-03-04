@@ -130,22 +130,40 @@ const displayDataDetails= news=>{
      const features=document.getElementById('features')
      const integration=document.getElementById('Integrations')
 
+        
 
 
-     features.innerHTML=`
-     <h4>Features</h4>
-     <li>${news.features[1].feature_name}</li>
-     <li>${news.features[2].feature_name}</li>
-     <li>${news.features[3].feature_name}</li>
+    //  features.innerHTML=`
+    //  <h4>Features</h4>
+     
+    //  <li>${news.features[1].feature_name}</li>
+    //  <li>${news.features[2].feature_name}</li>
+    //  <li>${news.features[3].feature_name}</li>
+    //  `
 
-     `
+     for(let data in news.features) {
+        let value = news.features[data].feature_name
+      
+        features.innerHTML += `<li>${value}</li>`
+    }
+  
 
-     integration.innerHTML=`
-     <h4>Integrations</h4>
-     <li>${news.integrations[0]}</li>
-     <li>${news.integrations[1]}</li>
-     <li>${news.integrations[2]}</li>
-     `
+
+
+     if(news.integrations!=null)
+     {
+        let listItems = news.integrations.map(function(data){
+            return '<li>' + data + '</li>';
+          })
+    
+         integration.innerHTML=listItems.join('');
+         integration.innerHTML="<h4>Integrations</h4>" +  integration.innerHTML
+     }
+     else{
+        integration.innerHTML=`<h4>Integrations</h4><p>No data Found</p>`
+     }
+   
+    
      document.getElementById("cardimg").src = news.image_link[0];
 
 
@@ -154,7 +172,13 @@ const displayDataDetails= news=>{
      <h4 class='text-center' >${news.input_output_examples[0].input}</h4>
      <p class='text-center' >${news.input_output_examples[0].output}</p>
      `
-    //  const img=document.createElement("img"); 
+    
+    
+    
+    
+    
+    
+     //  const img=document.createElement("img"); 
     //  img.src = `${news.image_link[0]}`; 
     //  const src = document.getElementById("second-card"); 
     //  src.appendChild(img); 
