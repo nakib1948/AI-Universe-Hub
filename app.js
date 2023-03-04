@@ -141,6 +141,8 @@ const displayDataDetails= news=>{
     //  <li>${news.features[3].feature_name}</li>
     //  `
 
+    features.innerHTML =' <h4>Features</h4>   '
+
      for(let data in news.features) {
         let value = news.features[data].feature_name
       
@@ -163,15 +165,28 @@ const displayDataDetails= news=>{
         integration.innerHTML=`<h4>Integrations</h4><p>No data Found</p>`
      }
    
+     if(news.accuracy.score!=null){
+        document.getElementById("cardimg").src = news.image_link[0];
+        document.getElementById('accuracy').innerHTML=`${news.accuracy.score*100}% accuracy`
+     }
+     else{
+        document.getElementById("cardimg").src = news.image_link[0];
+     }
     
-     document.getElementById("cardimg").src = news.image_link[0];
-
 
      const chatting=document.getElementById('chatting')
+     if(news.input_output_examples != null){
      chatting.innerHTML=`
      <h4 class='text-center' >${news.input_output_examples[0].input}</h4>
      <p class='text-center' >${news.input_output_examples[0].output}</p>
      `
+     }
+     else{
+        chatting.innerHTML=`
+        <h4 class='text-center' >Can you give any example?</h4>
+        <p class='text-center' >No! Not yet! Take a break!!!</p>
+        `
+     }
     
     
     
