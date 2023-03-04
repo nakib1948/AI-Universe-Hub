@@ -63,7 +63,7 @@ const displayUniverseHub=(data,datalimit,srotbydate)=>{
                 ${news.published_in}</small>
                 <button onclick="loadDataDetails('${news.id}')" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
                  style="background-color:#FEF7F7;border-radius:50%;border:none;width:50px hight:30px">
-                <img width="50px" src="./images/icons8-right-arrow-64.png">
+                <img width="30px" src="./images/icons8-right-arrow-64.png">
                 </button>
            </div>
            
@@ -101,18 +101,30 @@ const displayDataDetails= news=>{
      const price2=document.getElementById('pricing2')
 
 
-     price.innerHTML=`
-     <p style="color:green">${news.pricing[0].price}</p>
-     <p  style="color:green">${news.pricing[0].plan}</p>
-     `
-     price1.innerHTML=`
-     <p style="color:orange">${news.pricing[1].price}</p>
-     <p style="color:orange">${news.pricing[1].plan}</p>
-     `
-     price2.innerHTML=`
-     <p class='text-center' style="color:#EB5757">${news.pricing[2].price}</p>
-     <p class='text-center'  style="color:#EB5757">${news.pricing[2].plan}</p>
-     `
+     ///pricing part of modal
+    if(news.pricing != null)
+    {
+        price.innerHTML=`
+        <p style="color:green">${news.pricing[0].price}</p>
+        <p  style="color:green">${news.pricing[0].plan}</p>
+        `
+        price1.innerHTML=`
+        <p style="color:orange">${news.pricing[1].price}</p>
+        <p style="color:orange">${news.pricing[1].plan}</p>
+        `
+        price2.innerHTML=`
+        <p class='text-center' style="color:#EB5757">${news.pricing[2].price}</p>
+        <p class='text-center'  style="color:#EB5757">${news.pricing[2].plan}</p>
+        `
+    }
+    else {
+        price.innerHTML=` <p style="color:green">Free of <br> Cost/Basic</p>`
+        price1.innerHTML=` <p style="color:orange">Free of <br> Cost/Pro</p>`
+        price2.innerHTML=` <p style="color:#EB5757">Free of <br> Cost/Enterprice</p>`
+    }
+    
+    
+  
 
 
      const features=document.getElementById('features')
