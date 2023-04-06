@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  </head>
+  <body>
+   
+
+     <main class="container">
+        <!-- This is header section -->
+        <section class="text-center mt-5 mb-5">
+            <h1 class="mb-4">AI Universe Hub</h1>
+            <button onclick="sortByDate()" class="px-3 py-2 text-white rounded text-center " style="background-color: #EB5757;  ">Sort By Date</button>
+        
+        </section>
+       
+      <!-- this is all api data load section and showing the data using bootstrap card -->
+        <section>
+
+            <div id="newsContainer" class="row row-cols-1 row-cols-md-3 g-4">
+                      
+            </div>
+            <div id="show-all" class="text-center mt-3 ">
+                <button onclick="seeMoreFunction()" id="btn-show-all" class="px-4 py-2 text-white rounded text-center " style="background-color: #EB5757;  ">See more</button>
+            </div>
+        </section>
+        
+        <section id="loader" class="d-none">
+            <div style="height:400px" class="d-flex border align-items-center justify-content-center">
+                <div style="width: 6rem; height: 6rem;" class="spinner-border text-success" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </section>
+      
+
+        <section>
+        
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                  <div class="modal-content">
+                    <div class="d-flex justify-content-end">
+                      <button style="background-color: #EB5757; border-radius: 50%;" type="button" class="btn-close p-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body m-5">
+                     
+                        <div  class="row row-cols-1 row-cols-md-2 g-4">
+                            <div class="col">
+                              <div style="background: rgba(235, 87, 87, 0.05);" class="card">
+                                <div class="card-body">
+                                  <h4 class="text-left pt-2 pl-2" id="description-part" class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</h4>
+
+                                   <div class="d-flex justify-content-around" style="margin-top: 20px;" >
+                                    <div id="pricing" class="rounded bg-white" style="padding: 10px;">
+                                        
+                                    </div>
+                                    <div id="pricing1" class="rounded bg-white" style="padding: 10px;">
+                                       
+                                    </div>
+                                    <div id="pricing2" class="rounded bg-white" style="padding: 10px;">
+                                       
+                                    </div>
+                                   </div>
+
+
+                                   <div class="d-flex justify-content-around mt-3">
+                                    <div id="features">
+                                           
+                                    </div>
+                                    <div id="Integrations">
+                                       
+                                    </div>
+                                   </div>
+
+
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col">
+                              <div class="card">
+                                <div class="card imageAndAccuracy">
+                                    <img  style="margin: 20px;" id="cardimg"  src="" class="ronded img-fluid" alt="...">
+                                    <h5 class="top-right text-white p-1 rounded " style="background-color: #EB5757;" id="accuracy"></h5>
+                                </div>
+                                <div class="card-body" id="chatting">
+                               
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+     </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
