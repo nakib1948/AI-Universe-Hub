@@ -3,5 +3,5 @@
 To run this project go to this link
 
 ```bash
-ugly-basketball.surge.sh
+https://friendly-cranachan-b4a878.netlify.app/
 ```
